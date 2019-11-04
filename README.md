@@ -1,27 +1,37 @@
 # Food Bytes
 
 ## Requirements
-[NodeJs](https://nodejs.org/en/)
+Install [NodeJs](https://nodejs.org/en/) on your machine, following the official tutorial.
 
-## Setup
-```npm install -g ionic cordova```
+## Initialise ionic and cordova engines
+```sudo npm install -g ionic cordova```
 
-## Plugins
-```ionic cordova platform add browser```
+## Download project from GitHub
+```
+git clone https://github.com/Jonada1/food-bytes.git
+cd food-bytes
+```
+Install ionic and cordova platform dependencies:
+```
+ionic cordova platform add browser
+ionic cordova platform add ios
+ionic cordova platform add android
+```
 
-```ionic cordova platform add ios```
+## Running the app
+```
+ionic serve
+npm i -g native-run
+```
 
-```ionic cordova platform add android```
-
-## Run the app
-```ionic serve```
-
-```npm i -g native-run```
-
-To run the application in browser
-
+For development, deploy the application in browser
 ```ionic cordova run browser```
 
-Run your application in Device
+Deploy your application in Device (Android/iOS)
+```ionic cordova platform add android / iOS```
 
-```ionic cordova platform add android / ios```
+#Screenshots of Food Bytes
+TODO
+
+#Created by
+TODO
