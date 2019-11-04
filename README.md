@@ -4,7 +4,7 @@
 Install [NodeJs](https://nodejs.org/en/) on your machine, following the official tutorial.
 
 ## Initialise ionic and cordova engines
-```sudo npm install -g ionic cordova```
+```npm install -g ionic cordova```
 
 ## Download project from GitHub
 ```
@@ -18,17 +18,18 @@ ionic cordova platform add ios
 ionic cordova platform add android
 ```
 
-## Running the app
+## Running the app in the browser for development
 ```
 ionic serve
-npm i -g native-run
 ```
-
-For development, deploy the application in browser
+Or
 ```ionic cordova run browser```
 
-Deploy your application in Device (Android/iOS)
-```ionic cordova platform add android / iOS```
+Deploy your application in Device (for iOS, replace android with ios below):
+```
+npm install -g native-run
+ionic cordova platform add android
+```
 
 #Screenshots of Food Bytes
 TODO
