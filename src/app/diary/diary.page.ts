@@ -5,11 +5,11 @@ import { ToastController } from '@ionic/angular';
 import { PhotoService } from '../services/photo.service';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-diary',
+  templateUrl: 'diary.page.html',
+  styleUrls: ['diary.page.scss']
 })
-export class Tab2Page {
+export class DiaryPage {
   currentImage: any;
 
   constructor(private camera: Camera, public photoService: PhotoService, public toastController: ToastController) { }
