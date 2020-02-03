@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { apiBase } from '../../environments/urls';
+import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +13,6 @@ export class AuthService {
   }
 
   public registerJwtToken(token: string) {
-    this.storage.id_token = token;
+    this.storage.set('id_token', token);
   }
 }

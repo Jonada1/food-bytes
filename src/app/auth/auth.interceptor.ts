@@ -1,8 +1,8 @@
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { Observable, of, throwError } from 'rxjs';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { apiBase } from '../../environments/urls';
 
@@ -22,7 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>,
               next: HttpHandler): Observable<HttpEvent<any>> {
 
-        const idToken = this.storage.getItem('id_token');
+        const idToken = this.storage.get('id_token');
 
         if (idToken) {
             const cloned = req.clone({

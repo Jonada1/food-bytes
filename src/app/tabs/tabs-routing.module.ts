@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { AuthenticationGuard } from '../guards/authentication.guard';
-import { IonicStorageModule } from '@ionic/storage';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -55,8 +55,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), IonicStorageModule.forRoot()],
-  providers: [Storage],
+  imports: [RouterModule.forChild(routes), SharedModule],
   exports: [RouterModule]
 })
 export class TabsPageRoutingModule { }

@@ -10,20 +10,18 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(),
-    IonicStorageModule.forRoot(), AppRoutingModule, SharedModule],
+   AppRoutingModule, SharedModule],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
     Toast,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Storage,
   ],
   bootstrap: [AppComponent]
 })
