@@ -4,6 +4,7 @@ import { apiBase } from '../../environments/urls';
 import { tap, filter } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class LoginComponent implements OnInit, OnDestroy {
   apiBase = apiBase;
   routeParamsSubscription: Subscription;
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService, private iab: InAppBrowser) { }
 
   ngOnInit() {
     this.routeParamsSubscription = this.route.params.pipe(

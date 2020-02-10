@@ -10,6 +10,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +24,8 @@ import { SharedModule } from './shared/shared.module';
     Camera,
     Toast,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    InAppBrowser,
+    Deeplinks,
   ],
   bootstrap: [AppComponent]
 })

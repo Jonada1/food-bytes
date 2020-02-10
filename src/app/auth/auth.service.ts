@@ -13,6 +13,10 @@ export class AuthService {
   }
 
   public registerJwtToken(token: string) {
-    this.storage.set('id_token', token);
+    if (localStorage) {
+      localStorage.id_token = token;
+    } else {
+      this.storage.set('id_token', token);
+    }
   }
 }

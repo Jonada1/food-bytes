@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      {{route}} - {{(user$ | async) && (user$ | async).name}}
+      {{route}} - <ng-container *ngIf="user$ | async as user">
+        {{user.name}}
+      </ng-container>
     </ion-title>
   </ion-toolbar>
 </ion-header>

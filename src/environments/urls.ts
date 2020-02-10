@@ -1,3 +1,3 @@
 import { environment } from './environment';
 
-export const apiBase = environment.production ? '' : 'http://localhost:3000';
+export const apiBase = environment.production ? '' : 'http://7716fc79.ngrok.io';

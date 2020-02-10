@@ -8,7 +8,7 @@ export class AuthenticationGuard implements CanActivate {
     constructor(private router: Router, private storage: Storage) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        const token = this.storage.get('id_token');
+        const token = localStorage ? localStorage.id_token : this.storage.get('id_token');
 
         if (!Boolean(token)) {
             this.router.navigateByUrl('/login');

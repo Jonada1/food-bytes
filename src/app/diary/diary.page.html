@@ -7,7 +7,12 @@
 </ion-header>
 
 <ion-content>
-  <img [src]="currentImage" *ngIf="currentImage">
+  <img *ngIf="currentImage && !(analyzedImage$ | async)" [src]="currentImage">
+  <ng-container *ngIf="(analyzedImage$ | async) as analyzedImage">
+    <img src="{{apiBase}}/{{analyzedImage.url}}">
+    {{analyzedImage | json}}
+  </ng-container>
+  <ion-button (click)="saveImage()" [disabled]="!currentImage">Save</ion-button>
   
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
       <ion-fab-button (click)="takePicture()">
