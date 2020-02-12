@@ -1,0 +1,28 @@
+<ion-item-divider></ion-item-divider>
+<ion-title>Questionnaire {{ image.id }}</ion-title>
+<form [formGroup]="questionnaireForm">
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Question 1</ion-label>
+      <ion-input type="text" formControlName="answer1"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Question 2</ion-label>
+      <ion-input type="text" formControlName="answer2"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Question 3</ion-label>
+      <ion-input type="text" formControlName="answer3"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Question 4</ion-label>
+      <ion-input type="text" formControlName="answer4"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Question 5</ion-label>
+      <ion-input type="text" formControlName="answer5"></ion-input>
+    </ion-item>
+    <ion-button color="primary">Answer</ion-button>
+  </ion-list>
+</form>
+<ion-item-divider></ion-item-divider>

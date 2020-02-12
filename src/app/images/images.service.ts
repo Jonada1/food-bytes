@@ -7,11 +7,14 @@ import { Image } from './image.model';
 })
 export class ImagesService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   upload(image: File) {
-    console.log(image)
     const formData = new FormData();
     formData.append('file', image);
     return this.http.post<Image>('images/upload', formData);
+  }
+
+  getImagesWithoutQuestionnaires() {
+    return this.http.get<Image[]>('images/without-questionnaire');
   }
 }

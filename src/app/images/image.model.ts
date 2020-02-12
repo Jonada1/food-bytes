@@ -4,6 +4,7 @@ export interface Color {
 }
 
 export interface Image {
+    id: string;
     text: string;
     url: string;
     colors: Color[];

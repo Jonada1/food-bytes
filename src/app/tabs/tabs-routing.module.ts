@@ -31,6 +31,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'questionnaires',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../questionnaire/questionnaire.module').then(m => m.QuestionnaireModule)
+          }
+        ]
+      },
+      {
         path: 'settings',
         children: [
           {

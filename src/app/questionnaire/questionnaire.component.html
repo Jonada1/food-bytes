@@ -1,0 +1,3 @@
+<ng-container *ngIf="imagesWithoutQuestionnaire$ | async as images">
+  <app-questionnaire-form *ngFor="let image of images" [image]="image"></app-questionnaire-form>
+</ng-container>
