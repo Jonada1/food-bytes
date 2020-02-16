@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Image } from '../../images/image.model';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { apiBase } from '../../../environments/urls';
 
 @Component({
   selector: 'app-questionnaire-form',
@@ -8,6 +9,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
   styleUrls: ['./questionnaire-form.component.scss'],
 })
 export class QuestionnaireFormComponent implements OnInit {
+  apiBase = apiBase;
   @Input() image: Image;
   constructor(private fb: FormBuilder) { }
 

@@ -8,6 +8,9 @@ import { Image } from './image.model';
 export class ImagesService {
 
   constructor(private http: HttpClient) { }
+  tryPost() {
+    return this.http.post('images', {});
+  }
   upload(image: File) {
     const formData = new FormData();
     formData.append('file', image);

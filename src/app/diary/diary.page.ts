@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ToastController } from '@ionic/angular';
 
 import { PhotoService } from '../services/photo.service';
 import { ImagesService } from '../images/images.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Image } from '../images/image.model';
 import { apiBase } from '../../environments/urls';
+import { tap } from 'rxjs/operators';
 function dataURLtoFile(dataurl, filename) {
-
   const arr = dataurl.split(',');
   const mime = arr[0].match(/:(.*?);/)[1];
   const bstr = atob(arr[1]);
@@ -26,18 +26,36 @@ function dataURLtoFile(dataurl, filename) {
   templateUrl: 'diary.page.html',
   styleUrls: ['diary.page.scss']
 })
-export class DiaryPage {
+export class DiaryPage implements OnDestroy {
   apiBase = apiBase;
-  currentImage: any;
-  analyzedImage$: Observable<Image>;
+  currentImage: string;
+  analyzedImage: Image;
+  loading = false;
+  uploadSubscription: Subscription;
   constructor(
     private camera: Camera,
     private toastController: ToastController,
-    private imageService: ImagesService) { }
+    private imageService: ImagesService
+  ) {}
+
+  ngOnDestroy() {
+    this.uploadSubscription.unsubscribe();
+  }
 
   saveImage() {
     if (this.currentImage) {
-      this.analyzedImage$ = this.imageService.upload(dataURLtoFile(this.currentImage, 'image.jpg'));
+      this.loading = true;
+      try {
+        this.uploadSubscription = this.imageService
+          .upload(dataURLtoFile(this.currentImage, 'image.jpg'))
+          .subscribe((analyzedImage) => {
+            this.analyzedImage = analyzedImage;
+            this.loading = false;
+            this.currentImage = null;
+          });
+      } catch {
+        this.loading = false;
+      }
     }
   }
 
@@ -49,17 +67,19 @@ export class DiaryPage {
       mediaType: this.camera.MediaType.PICTURE
     };
 
-    this.camera.getPicture(options).then((imageData) => {
-      this.currentImage = 'data:image/jpeg;base64,' + imageData;
-    }, async (err) => {
-      // Handle error
-      const toast = await this.toastController.create({
-        message: err,
-        duration: 2000,
-        position: 'top',
-      });
-      toast.present();
-    });
+    this.camera.getPicture(options).then(
+      imageData => {
+        this.currentImage = 'data:image/jpeg;base64,' + imageData;
+      },
+      async err => {
+        // Handle error
+        const toast = await this.toastController.create({
+          message: err,
+          duration: 2000,
+          position: 'top'
+        });
+        toast.present();
+      }
+    );
   }
-
 }

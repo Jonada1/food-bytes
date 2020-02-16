@@ -7,16 +7,16 @@
 </ion-header>
 
 <ion-content>
-  <img *ngIf="currentImage && !(analyzedImage$ | async)" [src]="currentImage">
-  <ng-container *ngIf="(analyzedImage$ | async) as analyzedImage">
-    <img src="{{apiBase}}/{{analyzedImage.url}}">
-    {{analyzedImage | json}}
+  <img *ngIf="currentImage && !loading" [src]="currentImage" />
+  <div class="spinner-div" *ngIf="loading"><ion-spinner></ion-spinner></div>
+  <ng-container *ngIf="!currentImage && analyzedImage">
+    <app-image [image]="analyzedImage"></app-image>
   </ng-container>
-  <ion-button (click)="saveImage()" [disabled]="!currentImage">Save</ion-button>
-  
+  <ion-button *ngIf="currentImage && !loading" (click)="saveImage()">Save</ion-button>
+
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-      <ion-fab-button (click)="takePicture()">
-        <ion-icon name="camera"></ion-icon>
-      </ion-fab-button>
+    <ion-fab-button [disabled]="loading" (click)="takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
   </ion-fab>
-  </ion-content>
+</ion-content>

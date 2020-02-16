@@ -7,9 +7,10 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { QuestionnaireFormComponent } from './questionnaire-form/questionnaire-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { QuestionnaireFormListComponent } from './questionnaire-form-list/questionnaire-form-list.component';
 
 @NgModule({
-  declarations: [QuestionnaireComponent, QuestionnaireFormComponent],
+  declarations: [QuestionnaireComponent, QuestionnaireFormComponent, QuestionnaireFormListComponent],
   imports: [
     CommonModule,
     IonicModule,

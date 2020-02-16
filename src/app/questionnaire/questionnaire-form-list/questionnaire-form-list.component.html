@@ -1,0 +1,8 @@
+<ion-slides pager="true" [options]="slideOpts">
+  <ion-slide *ngFor="let image of imagesWithoutQuestionnaire">
+    <app-questionnaire-form [image]="image"></app-questionnaire-form>
+  </ion-slide>
+  <ion-slide>
+    <h1>No more questionnaires</h1>
+  </ion-slide>
+</ion-slides>
