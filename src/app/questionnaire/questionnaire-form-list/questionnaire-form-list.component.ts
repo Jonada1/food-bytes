@@ -8,7 +8,7 @@ import { Image } from '../../images/image.model';
 })
 export class QuestionnaireFormListComponent implements OnInit {
   slideOpts = {
-    initialSlide: 1,
+    initialSlide: 0,
   };
   @Input() imagesWithoutQuestionnaire: Image[];
   constructor() { }

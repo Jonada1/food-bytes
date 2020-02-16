@@ -1,11 +1,14 @@
-<ion-col style="text-align: center;" col-4>
+<ion-col> Dominant colors </ion-col>
+<ion-col>
   <ng-container *ngIf="colors">
     <ng-container *ngFor="let color of colors">
       <ng-container *ngIf="getPercentage(color.population) as percentage">
-        <ng-container *ngIf="percentage > 2">
-          <div [ngStyle]="getStyle(color)"></div>
-          <div style="text-align: center;">{{ percentage }}%</div>
-        </ng-container>
+        <div style="text-align: -webkit-center;margin-right: 15px;">
+          <ng-container *ngIf="percentage > 2">
+            <div [ngStyle]="getStyle(color)"></div>
+            <div style="text-align: center;">{{ percentage }}%</div>
+          </ng-container>
+        </div>
       </ng-container>
     </ng-container>
   </ng-container>

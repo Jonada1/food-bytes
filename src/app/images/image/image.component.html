@@ -1,16 +1,26 @@
-<ion-card>
-  <ion-img src="{{ apiBase }}/{{ image.url }}"></ion-img>
-  
-  <ion-card-header>
-    <ion-card-title>
-      {{image.text}}
-    </ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <ion-grid>
-      <ion-row>
-        <app-image-colors [colors]="image.colors"></app-image-colors>
-      </ion-row>
-    </ion-grid>
-  </ion-card-content>
-</ion-card>
+<ion-item-sliding>
+  <ion-item-options side="end">
+    <ion-item-option color="danger" expandable>
+      Delete
+    </ion-item-option>
+  </ion-item-options>
+
+  <ion-item>
+    <ion-card>
+      <ion-img src="{{ apiBase }}/{{ image.url }}"></ion-img>
+
+      <ion-card-header>
+        <ion-card-title>
+          {{image.text}}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <app-image-colors [colors]="image.colors"></app-image-colors>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+</ion-item-sliding>
