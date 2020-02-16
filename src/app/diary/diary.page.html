@@ -12,7 +12,9 @@
   <ng-container *ngIf="!currentImage && analyzedImage">
     <app-image [image]="analyzedImage"></app-image>
   </ng-container>
-  <ion-button *ngIf="currentImage && !loading" (click)="saveImage()">Save</ion-button>
+  <ion-col style="width:100%" class="d-flex">
+    <ion-button *ngIf="currentImage && !loading" (click)="saveImage()">Analyse photo</ion-button>
+  </ion-col>
 
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button [disabled]="loading" (click)="takePicture()">
