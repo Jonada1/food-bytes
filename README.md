@@ -31,6 +31,11 @@ npm install -g native-run
 ionic cordova platform add android
 ```
 
+## Running the app in android device
+```
+ionic cordova run android
+```
+
 #Screenshots of Food Bytes
 TODO
 
