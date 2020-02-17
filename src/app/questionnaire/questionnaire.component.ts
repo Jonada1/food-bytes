@@ -14,18 +14,22 @@ export class QuestionnaireComponent implements OnInit {
   constructor(private imageService: ImagesService) {}
   answeredIds: string[] = [];
   addedAnswered$ = new BehaviorSubject<string>(null);
-  imagesWithoutQuestionnaire$ = combineLatest([
-    this.imageService.getImagesWithoutQuestionnaires(),
-    this.addedAnswered$
-  ]).pipe(
-    map(([questionnaires]) =>
-      questionnaires.filter(x => !this.answeredIds.includes(x.id))
-    )
-  );
+  enteredView$ = new BehaviorSubject<boolean>(false);
+  imagesWithoutQuestionnaire$ = this.getImagesWithotuQuesttionaire();
 
-  ngOnInit(): void {
-    this.addedAnswered$.pipe(startWith(''));
-    this.imagesWithoutQuestionnaire$.subscribe(x => console.log(x));
+  ngOnInit(): void {}
+  ionViewWillEnter() {
+    this.imagesWithoutQuestionnaire$ = this.getImagesWithotuQuesttionaire();
+  }
+  getImagesWithotuQuesttionaire() {
+    return combineLatest([
+      this.imageService.getImagesWithoutQuestionnaires(),
+      this.addedAnswered$.pipe(startWith(''))
+    ]).pipe(
+      map(([questionnaires]) =>
+        questionnaires.filter(x => !this.answeredIds.includes(x.id))
+      )
+    );
   }
 
   addAnswered(id: string) {
