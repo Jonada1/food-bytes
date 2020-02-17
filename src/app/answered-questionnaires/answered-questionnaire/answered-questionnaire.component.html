@@ -1,0 +1,80 @@
+<img src="{{ apiBase }}/{{ imageWithQuestionnaire.url }}" />
+<form [formGroup]="questionnaireForm">
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Taste</ion-label>
+      <ion-range
+        [disabled]="true"
+        formControlName="answer1"
+        snaps
+        step="1"
+        min="1"
+        max="10"
+        color="secondary"
+      >
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">10</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Bloating</ion-label
+      ><ion-range
+        [disabled]="true"
+        formControlName="answer2"
+        snaps
+        step="1"
+        min="1"
+        max="10"
+        color="secondary"
+      >
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">10</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Gas</ion-label>
+      <ion-range
+        [disabled]="true"
+        formControlName="answer3"
+        snaps
+        step="1"
+        min="1"
+        max="10"
+        color="secondary"
+      >
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">10</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Indigestion</ion-label>
+      <ion-range
+        [disabled]="true"
+        formControlName="answer4"
+        snaps
+        step="1"
+        min="1"
+        max="10"
+        color="secondary"
+      >
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">10</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Heartburn</ion-label
+      ><ion-range
+        [disabled]="true"
+        formControlName="answer5"
+        snaps
+        step="1"
+        min="1"
+        max="10"
+        color="secondary"
+      >
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">10</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+</form>

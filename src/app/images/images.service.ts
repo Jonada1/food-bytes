@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Image } from './image.model';
+import { Image, ImageWithQuestionnaire } from './image.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,9 @@ export class ImagesService {
 
   getImagesWithoutQuestionnaires() {
     return this.http.get<Image[]>('images/without-questionnaire');
+  }
+
+  getImagesWithQuestionnaires() {
+    return this.http.get<ImageWithQuestionnaire[]>('images/with-questionnaire');
   }
 }

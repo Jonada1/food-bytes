@@ -18,9 +18,11 @@ export class QuestionnaireComponent implements OnInit {
   imagesWithoutQuestionnaire$ = this.getImagesWithotuQuesttionaire();
 
   ngOnInit(): void {}
+
   ionViewWillEnter() {
     this.imagesWithoutQuestionnaire$ = this.getImagesWithotuQuesttionaire();
   }
+
   getImagesWithotuQuesttionaire() {
     return combineLatest([
       this.imageService.getImagesWithoutQuestionnaires(),

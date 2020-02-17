@@ -44,9 +44,20 @@ export class QuestionnaireFormComponent implements OnDestroy {
   }
 
   submit() {
+    const {
+      answer1,
+      answer2,
+      answer3,
+      answer4,
+      answer5
+    } = this.questionnaireForm.value;
     this.answeredQuestionnaireSubscription = this.questionnaireService
       .answerQuestionnaire({
-        ...this.questionnaireForm.value,
+        questionOneAnswer: answer1,
+        questionTwoAnswer: answer2,
+        questionThreeAnswer: answer3,
+        questionFourAnswer: answer4,
+        questionFiveAnswer: answer5,
         imageId: this.image.id
       })
       .subscribe(() => {

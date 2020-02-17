@@ -41,6 +41,16 @@ export const tabRoutes: Routes = [
         ]
       },
       {
+        path: 'answered-questionnaires',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../answered-questionnaires/answered-questionnaires.module').then(m => m.AnsweredQuestionnairesModule)
+          }
+        ]
+      },
+      {
         path: 'settings',
         children: [
           {
