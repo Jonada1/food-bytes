@@ -5,15 +5,18 @@ import { Storage } from '@ionic/storage';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { apiBase } from '../../environments/urls';
+import { NavController } from '@ionic/angular';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private router: Router, private storage: Storage) { }
+    constructor(private router: Router, private storage: Storage, private nav: NavController) { }
     private handleAuthError(err: HttpErrorResponse): Observable<any> {
         // handle your auth error or rethrow
         if (err.status === 401 || err.status === 403) {
             // navigate /delete cookies or whatever
-            this.router.navigateByUrl(`/login`);
+            this.storage.remove('id_token');
+            console.log('Removed id token')
+            this.nav.navigateRoot([`/login`]);
             return of(err.message);
         }
         return throwError(err);

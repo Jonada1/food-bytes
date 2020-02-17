@@ -1,4 +1,10 @@
-
-<ng-container  *ngIf="images$ | async as images">
+<ng-container *ngIf="images">
   <app-image *ngFor="let image of images" [image]="image"></app-image>
 </ng-container>
+<ion-infinite-scroll threshold="100px" (ionInfinite)="addPageToShow($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data..."
+  >
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>

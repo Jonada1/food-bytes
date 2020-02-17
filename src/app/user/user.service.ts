@@ -14,7 +14,7 @@ export class UserService {
     return this.http.get<User>('users/current');
   }
 
-  getUserImages() {
-    return this.http.get<Image[]>('users/images');
+  getUserImages(page?: number) {
+    return this.http.get<Image[]>(`users/images?page=${page}`);
   }
 }
