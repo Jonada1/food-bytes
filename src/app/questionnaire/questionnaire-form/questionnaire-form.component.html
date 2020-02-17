@@ -1,26 +1,76 @@
-<img src="{{apiBase}}/{{image.url}}" />
+<img src="{{ apiBase }}/{{ image.url }}" />
 <form [formGroup]="questionnaireForm">
   <ion-list>
     <ion-item>
       <ion-label floating>Taste</ion-label>
-      <ion-input type="text" formControlName="answer1"></ion-input>
+      <ion-range
+        formControlName="answer1"
+        snaps
+        step="1"
+        min="1"
+        max="10"
+        color="secondary"
+      >
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">10</ion-label>
+      </ion-range>
     </ion-item>
     <ion-item>
-      <ion-label floating>Bloating</ion-label>
-      <ion-input type="text" formControlName="answer2"></ion-input>
+      <ion-label floating>Bloating</ion-label
+      ><ion-range
+        formControlName="answer2"
+        snaps
+        step="1"
+        min="1"
+        max="10"
+        color="secondary"
+      >
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">10</ion-label>
+      </ion-range>
     </ion-item>
     <ion-item>
       <ion-label floating>Gas</ion-label>
-      <ion-input type="text" formControlName="answer3"></ion-input>
+      <ion-range
+        formControlName="answer3"
+        snaps
+        step="1"
+        min="1"
+        max="10"
+        color="secondary"
+      >
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">10</ion-label>
+      </ion-range>
     </ion-item>
     <ion-item>
       <ion-label floating>Indigestion</ion-label>
-      <ion-input type="text" formControlName="answer4"></ion-input>
+      <ion-range
+        formControlName="answer4"
+        snaps
+        step="1"
+        min="1"
+        max="10"
+        color="secondary"
+      >
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">10</ion-label>
+      </ion-range>
     </ion-item>
     <ion-item>
-      <ion-label floating>Heartburn</ion-label>
-      <ion-input type="text" formControlName="answer5"></ion-input>
+      <ion-label floating>Heartburn</ion-label
+      ><ion-range
+        formControlName="answer5"
+        snaps
+        step="1"
+        min="1"
+        max="10"
+        color="secondary"
+      >
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">10</ion-label>
+      </ion-range>
     </ion-item>
-    <ion-button color="primary">Answer</ion-button>
+    <ion-button (click)="submit()" color="primary">Answer</ion-button>
   </ion-list>
 </form>

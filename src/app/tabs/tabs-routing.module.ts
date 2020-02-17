@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 import { AuthenticationGuard } from '../guards/authentication.guard';
 import { SharedModule } from '../shared/shared.module';
 
-const routes: Routes = [
+export const tabRoutes: Routes = [
   {
     path: 'tabs',
     component: TabsPage,
@@ -65,7 +65,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), SharedModule],
+  imports: [RouterModule.forChild(tabRoutes), SharedModule],
   exports: [RouterModule]
 })
 export class TabsPageRoutingModule { }

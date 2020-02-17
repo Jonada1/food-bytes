@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Questionnaire } from './questionnaire.model';
+import { Questionnaire, PostQuestionnaireDto } from './questionnaire.model';
 import { apiBase } from '../../environments/urls';
 
 @Injectable({
@@ -12,5 +12,9 @@ export class QuestionnaireService {
   }
   public getQuestionnaires() {
     return this.http.get<Questionnaire[]>('questionnaire/user');
+  }
+
+  public answerQuestionnaire(questionnaire: PostQuestionnaireDto) {
+    return this.http.post<void>('questionnaire', questionnaire);
   }
 }

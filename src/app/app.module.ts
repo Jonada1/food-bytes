@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, ActivatedRouteSnapshot } from '@angular/router';
 import { Camera } from '@ionic-native/camera/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { TabsPage } from './tabs/tabs.page';
+import { TabsPageModule } from './tabs/tabs.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(),
-   AppRoutingModule, SharedModule],
+   AppRoutingModule, SharedModule, TabsPageModule],
   providers: [
     StatusBar,
     SplashScreen,

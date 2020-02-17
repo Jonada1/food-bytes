@@ -14,7 +14,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 export class LoginComponent implements OnInit, OnDestroy {
   apiBase = apiBase;
   routeParamsSubscription: Subscription;
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService, private iab: InAppBrowser) { }
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.routeParamsSubscription = this.route.params.pipe(

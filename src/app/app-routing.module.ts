@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
+import { tabRoutes } from './tabs/tabs-routing.module';
 
 const routes: Routes = [
   {
@@ -17,11 +18,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then(m => m.LoginModule),
   },
+  ...tabRoutes
 ];
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, onSameUrlNavigation: 'reload' })
   ],
   exports: [RouterModule]
 })

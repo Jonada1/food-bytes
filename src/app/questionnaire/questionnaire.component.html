@@ -1,5 +1,6 @@
 <ng-container *ngIf="imagesWithoutQuestionnaire$ | async as images">
   <app-questionnaire-form-list
+    (addAnswered)="addAnswered($event)"
     [imagesWithoutQuestionnaire]="images"
   ></app-questionnaire-form-list>
 </ng-container>

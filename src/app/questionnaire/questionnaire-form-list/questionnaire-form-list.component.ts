@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Image } from '../../images/image.model';
 
 @Component({
@@ -11,6 +11,7 @@ export class QuestionnaireFormListComponent implements OnInit {
     initialSlide: 0,
   };
   @Input() imagesWithoutQuestionnaire: Image[];
+  @Output() addAnswered = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {}

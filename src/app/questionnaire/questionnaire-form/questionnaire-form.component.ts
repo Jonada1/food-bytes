@@ -1,29 +1,56 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy
+} from '@angular/core';
 import { Image } from '../../images/image.model';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { apiBase } from '../../../environments/urls';
+import { QuestionnaireService } from '../questionnaire.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-questionnaire-form',
   templateUrl: './questionnaire-form.component.html',
-  styleUrls: ['./questionnaire-form.component.scss'],
+  styleUrls: ['./questionnaire-form.component.scss']
 })
-export class QuestionnaireFormComponent implements OnInit {
+export class QuestionnaireFormComponent implements OnDestroy {
   apiBase = apiBase;
   @Input() image: Image;
-  constructor(private fb: FormBuilder) { }
+  @Output() addAnswered = new EventEmitter();
+
+  answeredQuestionnaireSubscription: Subscription;
+
+  constructor(
+    private fb: FormBuilder,
+    private questionnaireService: QuestionnaireService
+  ) {}
 
   questionnaireForm = this.fb.group({
-    answer1: new FormControl(''),
-    answer2: new FormControl(''),
-    answer3: new FormControl(''),
-    answer4: new FormControl(''),
-    answer5: new FormControl(''),
+    answer1: new FormControl(1),
+    answer2: new FormControl(1),
+    answer3: new FormControl(1),
+    answer4: new FormControl(1),
+    answer5: new FormControl(1)
   });
 
-  submit() {
-    console.log(this.questionnaireForm.value);
+  ngOnDestroy() {
+    if (this.answeredQuestionnaireSubscription) {
+      this.answeredQuestionnaireSubscription.unsubscribe();
+    }
   }
-  ngOnInit() { }
 
+  submit() {
+    this.answeredQuestionnaireSubscription = this.questionnaireService
+      .answerQuestionnaire({
+        ...this.questionnaireForm.value,
+        imageId: this.image.id
+      })
+      .subscribe(() => {
+        this.addAnswered.emit();
+      });
+  }
 }
