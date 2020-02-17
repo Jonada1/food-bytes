@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Image, Color } from '../image.model';
 import { apiBase } from '../../../environments/urls';
 
@@ -10,6 +10,6 @@ import { apiBase } from '../../../environments/urls';
 export class ImageComponent implements OnInit {
   apiBase = apiBase;
   @Input() image: Image;
+  @Output() delete = new EventEmitter();
   ngOnInit() { }
-
 }

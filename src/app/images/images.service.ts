@@ -6,10 +6,12 @@ import { Image } from './image.model';
   providedIn: 'root'
 })
 export class ImagesService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   tryPost() {
     return this.http.post('images', {});
+  }
+  async delete(imageId: string) {
+    return await this.http.delete(`images/${imageId}`).toPromise();
   }
   upload(image: File) {
     const formData = new FormData();
