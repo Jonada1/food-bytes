@@ -13,7 +13,10 @@ export class ImageListComponent implements OnInit, OnDestroy {
   @Input() shouldReload: BehaviorSubject<boolean>;
   pages = 1;
   shouldReloadSubscription: Subscription;
-  constructor(private userService: UserService, private imagesService: ImagesService) {}
+  constructor(
+    private userService: UserService,
+    private imagesService: ImagesService
+  ) {}
   images: Image[];
   extraPagesSubscription: Subscription[] = [];
   imagesSubscription = this.userService

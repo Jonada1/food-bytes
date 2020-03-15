@@ -3,6 +3,7 @@
     <ion-title>
       {{route}} - <ng-container *ngIf="user$ | async as user">
         {{user.name}}
+        <ion-icon name="md-exit" (click)="logOut()"></ion-icon>
       </ng-container>
     </ion-title>
   </ion-toolbar>
