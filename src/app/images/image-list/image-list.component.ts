@@ -13,15 +13,14 @@ export class ImageListComponent implements OnInit, OnDestroy {
   @Input() shouldReload: BehaviorSubject<boolean>;
   pages = 1;
   shouldReloadSubscription: Subscription;
+  hasReachedEnd = false;
   constructor(
     private userService: UserService,
     private imagesService: ImagesService
   ) {}
-  images: Image[];
+  images: Image[] = [];
   extraPagesSubscription: Subscription[] = [];
-  imagesSubscription = this.userService
-    .getUserImages(this.pages)
-    .subscribe(x => (this.images = x));
+  imagesSubscription: Subscription;
   ngOnInit() {
     this.shouldReloadSubscription = this.shouldReload.subscribe(() => {
       this.pages = 1;
@@ -34,6 +33,7 @@ export class ImageListComponent implements OnInit, OnDestroy {
         .getUserImages(this.pages)
         .subscribe(images => {
           this.images = images;
+          this.updatePageAndEndReach(images);
         });
     });
   }
@@ -42,27 +42,40 @@ export class ImageListComponent implements OnInit, OnDestroy {
     this.extraPagesSubscription.forEach(x => x.unsubscribe());
   }
   addPageToShow(event) {
+    if (this.hasReachedEnd) {
+      event.target.complete();
+      return;
+    }
     this.extraPagesSubscription.push(
       this.userService.getUserImages(this.pages).subscribe(images => {
-        this.images = [...this.images, ...images];
-        if (images.length === 5) {
-          this.pages++;
-        }
+        this.loadImages(images);
         event.target.complete();
       })
     );
+  }
+
+  private loadImages(images: Image[]) {
+    this.images = [...(this.images || []), ...images];
+    this.updatePageAndEndReach(images);
+  }
+
+  private updatePageAndEndReach(images: Image[]) {
+    if (images.length < 5) {
+      this.hasReachedEnd = true;
+    } else {
+      this.pages++;
+    }
   }
 
   async deleteImage(imageId: string) {
     await this.imagesService.delete(imageId);
     this.images = this.images.filter(x => x.id !== imageId);
     if (this.images.length < 5) {
+      this.pages = 1;
       this.extraPagesSubscription.push(
         this.userService.getUserImages(this.pages).subscribe(images => {
-          this.images = [...this.images, ...images];
-          if (images.length === 5) {
-            this.pages++;
-          }
+          this.images = images;
+          this.updatePageAndEndReach(images);
         })
       );
     }
