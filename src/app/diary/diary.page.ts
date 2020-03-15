@@ -70,12 +70,15 @@ export class DiaryPage implements OnDestroy {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      cameraDirection: this.camera.Direction.BACK,
+      correctOrientation: true,
     };
     this.loading = true;
 
     this.camera.getPicture(options).then(
       imageData => {
+        console.log(imageData)
         this.currentImage = "data:image/jpeg;base64," + imageData;
         this.loading = false;
       },
