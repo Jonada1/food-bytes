@@ -21,6 +21,16 @@ export const tabRoutes: Routes = [
         ]
       },
       {
+        path: 'meals',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../meals/meals.module').then(m => m.MealsModule)
+          }
+        ]
+      },
+      {
         path: 'diary',
         children: [
           {

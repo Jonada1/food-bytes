@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
-import { TabsPage } from './tabs/tabs.page';
 import { TabsPageModule } from './tabs/tabs.module';
 
 @NgModule({

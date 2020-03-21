@@ -26,4 +26,8 @@ export class ImagesService {
   getImagesWithQuestionnaires() {
     return this.http.get<ImageWithQuestionnaire[]>('images/with-questionnaire');
   }
+
+  getMeals() {
+    return this.http.get<{[index: string]: Date[]}>('images/meals');
+  }
 }

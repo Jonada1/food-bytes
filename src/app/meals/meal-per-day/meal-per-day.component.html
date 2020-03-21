@@ -1,0 +1,17 @@
+<ion-list-header slot="start">
+  <div>
+    <h2>
+      {{ dayMeals[0].format('Do MMM') }}
+    </h2>
+    <h4>
+      {{ dayMeals.length }} Meal<ng-container *ngIf="dayMeals.length > 1">s</ng-container>
+    </h4>
+  </div>
+</ion-list-header>
+<ion-item>
+  <ion-label>
+    <p *ngFor="let dayMeal of dayMeals; let i = index">
+      Meal {{ i + 1 }} - {{ dayMeal.format('HH:mm') }}
+    </p>
+  </ion-label>
+</ion-item>

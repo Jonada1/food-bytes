@@ -1,0 +1,5 @@
+<ion-list>
+  <ng-container *ngFor="let meal of meals$ | async | keyvalue">
+    <app-meal-per-day [dayMeals]="meal.value"></app-meal-per-day>
+  </ng-container>
+</ion-list>
