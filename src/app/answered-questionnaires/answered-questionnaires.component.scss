@@ -35,4 +35,8 @@
   p b {
     color: var(--ion-text-color, #000000);
   }
-  
+
+  .swiper-slide {
+    overflow-y: scroll;
+    display: block;
+  }

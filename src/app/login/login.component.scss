@@ -4,8 +4,16 @@ ion-card {
 }
 
 ion-button {
-  margin: 0 15px;
+  margin: 0 15px 30px;
   display: block;
+}
+
+ion-checkbox {
+  margin: 0 15px;
+}
+
+ion-label{
+  margin-right: 15px;
 }
 
 ion-card-subtitle {

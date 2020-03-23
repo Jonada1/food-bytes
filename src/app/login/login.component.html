@@ -8,8 +8,9 @@
       </ion-card-subtitle>
     </ion-card-header>
     <ion-list lines="none">
-      <ion-button color="primary" href="{{apiBase}}/auth/google">Sign In with Google</ion-button>
+      <ion-button color="primary" href="{{apiBase}}/auth/google" [disabled]="!checkedbtn">Sign In with Google</ion-button>
+      <ion-checkbox [(ngModel)]="checkedbtn" name="terms" class="terms-checkbox"></ion-checkbox>
+      <ion-label class="terms-checkbox-label">I have read and agree to the Terms and policy and acknowledge the <a href="https://www.privacypolicygenerator.info/live.php?token=1ONHXHHuAm5B4glElep0aX4Fw3HCZudN" target="_blank">Privacy Policy</a></ion-label>
     </ion-list>
   </ion-card>
-  
 </ion-content>

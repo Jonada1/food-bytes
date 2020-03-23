@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { apiBase } from '../../environments/urls';
-import { tap, filter } from 'rxjs/operators';
-import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { filter, tap } from 'rxjs/operators';
+import { apiBase } from '../../environments/urls';
+import { AuthService } from '../auth/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -12,6 +12,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  checkedbtn: boolean;
   apiBase = apiBase;
   routeParamsSubscription: Subscription;
   constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) { }

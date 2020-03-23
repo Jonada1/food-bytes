@@ -36,7 +36,7 @@ export const tabRoutes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../diary/diary.module').then(m => m.DiaryPageModule),
+              import('../diary/diary.module').then(m => m.DiaryPageModule)
           }
         ]
       },

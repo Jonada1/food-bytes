@@ -1,13 +1,11 @@
-import { Component, OnDestroy } from "@angular/core";
+import { Component, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 import { ToastController } from "@ionic/angular";
-
-import { PhotoService } from "../services/photo.service";
-import { ImagesService } from "../images/images.service";
-import { Observable, Subscription } from "rxjs";
-import { Image } from "../images/image.model";
+import { Subscription } from "rxjs";
 import { apiBase } from "../../environments/urls";
-import { tap } from "rxjs/operators";
+import { Image } from "../images/image.model";
+import { ImagesService } from "../images/images.service";
+
 function dataURLtoFile(dataurl, filename) {
   const arr = dataurl.split(",");
   const mime = arr[0].match(/:(.*?);/)[1];
@@ -35,7 +33,7 @@ export class DiaryPage implements OnDestroy {
   constructor(
     private camera: Camera,
     private toastController: ToastController,
-    private imageService: ImagesService
+    private imageService: ImagesService,
   ) {}
 
   ngOnDestroy() {

@@ -8,6 +8,8 @@
 
 <ion-content>
   <img *ngIf="currentImage && !loading" [src]="currentImage" />
+  {{ currentImage | json}}
+  {{(currentImage && !loading) |json}}
   <div class="spinner-div" *ngIf="loading"><ion-spinner></ion-spinner></div>
   <ng-container *ngIf="!currentImage && analyzedImage">
     <app-image [image]="analyzedImage"></app-image>

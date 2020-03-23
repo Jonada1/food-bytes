@@ -3,22 +3,23 @@
   class="ion-padding"
   mode="md"
   lockSwipeToNext="true"
-  scroll-y="false"
->
-  <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide
-      *ngFor="let imageWithQuestionnaire of answeredQuestionnaires$ | async"
-    >
-      <div class="slide">
-        <app-answered-questionnaire
-          [imageWithQuestionnaire]="imageWithQuestionnaire"
-        ></app-answered-questionnaire>
-      </div>
-    </ion-slide>
-    <ion-slide>
-      <div class="slide">
-        <h1>No more questionnaires</h1>
-      </div>
-    </ion-slide>
-  </ion-slides>
+  scroll-y="false">
+  <div>
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide
+        *ngFor="let imageWithQuestionnaire of answeredQuestionnaires$ | async"
+      >
+        <div class="slide">
+          <app-answered-questionnaire
+            [imageWithQuestionnaire]="imageWithQuestionnaire"
+          ></app-answered-questionnaire>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide">
+          <h1>No more questionnaires</h1>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
 </ion-content>

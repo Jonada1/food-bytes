@@ -15,7 +15,6 @@ export class AuthInterceptor implements HttpInterceptor {
         if (err.status === 401 || err.status === 403) {
             // navigate /delete cookies or whatever
             this.storage.remove('id_token');
-            console.log('Removed id token')
             this.nav.navigateRoot([`/login`]);
             return of(err.message);
         }

@@ -14,6 +14,7 @@ export class QuestionnaireFormListComponent implements OnInit {
   @Output() addAnswered = new EventEmitter<string>();
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }
