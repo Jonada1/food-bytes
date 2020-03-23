@@ -28,7 +28,6 @@ export class AppComponent {
       this.deeplinks.route({
         '/login/:token': LoginComponent
       }).subscribe((match) => {
-        console.log('Successfully routed', match);
         setTimeout(() => {
           this.router.navigate(['/login/', match.$args.token]);
         }, 1000);

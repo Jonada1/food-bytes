@@ -76,7 +76,6 @@ export class DiaryPage implements OnDestroy {
 
     this.camera.getPicture(options).then(
       imageData => {
-        console.log(imageData)
         this.currentImage = "data:image/jpeg;base64," + imageData;
         this.loading = false;
       },
